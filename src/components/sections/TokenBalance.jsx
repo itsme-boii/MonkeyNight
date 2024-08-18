@@ -29,7 +29,7 @@ const Wrapper = styled.div`
   }
 `;
 const Title = styled.div`
-  font-size: 52px;
+  font-size: 58px;
   text-align: center;
   font-weight: 600;
   margin-top: 20px;
@@ -59,7 +59,8 @@ const TokensContainer = styled.div`
 `;
 
 const Token = styled.div`
-  width: 100%;
+  width: 500px;
+  height:230px;
   max-width: 500px;
   background-color: rgba(17, 25, 40, 0.83);
   border: 1px solid rgba(255, 255, 255, 0.125);
@@ -628,8 +629,8 @@ const TokenBalance = () => {
                   </TokenItem>
                 </TokenList>
                 {balance !== null && (
-                <TokenItem>
-                  <span>Current Balance: {balance!=null && `${balance}`}</span>
+                <TokenItem style={{paddingLeft:"17px",width:"200px",marginLeft:"110px"}}>
+                  <span>{balance!=null && `${balance}`}</span>
                 </TokenItem>
               )}
               </Token>

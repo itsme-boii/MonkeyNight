@@ -5,6 +5,25 @@ import { Tilt } from "react-tilt";
 import SimpleCharts from "./graph"
 
 
+const BalanceHistoryList = styled.div`
+  margin-top: 20px;
+  width: 100%;
+  max-width: 800px;
+  background-color: rgba(17, 25, 40, 0.83);
+  border: 1px solid rgba(255, 255, 255, 0.125);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: rgba(23, 92, 230, 0.15) 0px 4px 24px;
+`;
+
+const BalanceItem = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 16px;
+  color: ${({ theme }) => theme.text_primary};
+`;
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -30,7 +49,7 @@ const Wrapper = styled.div`
   }
 `;
 const Title = styled.div`
-  font-size: 52px;
+  font-size: 58px;
   text-align: center;
   font-weight: 600;
   margin-top: 20px;
@@ -50,7 +69,7 @@ const Desc = styled.div`
   }
 `;
 
-const SkillsContainer = styled.div`
+const TokensContainer = styled.div`
   width: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -59,8 +78,9 @@ const SkillsContainer = styled.div`
   justify-content: center;
 `;
 
-const Skill = styled.div`
-  width: 100%;
+const Token = styled.div`
+   width: 500px;
+  height:230px;
   max-width: 500px;
   background-color: rgba(17, 25, 40, 0.83);
   border: 1px solid rgba(255, 255, 255, 0.125);
@@ -78,7 +98,7 @@ const Skill = styled.div`
   }
 `;
 
-const SkillTitle = styled.div`
+const TokenTitle = styled.div`
   font-size: 28px;
   font-weight: 600;
   margin-bottom: 20px;
@@ -86,14 +106,14 @@ const SkillTitle = styled.div`
   color: ${({ theme }) => theme.text_secondary};
 `;
 
-const SkillList = styled.div`
+const TokenList = styled.div`
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   gap: 12px;
   margin-bottom: 20px;
 `;
-const SkillItem = styled.div`
+const TokenItem = styled.div`
   font-size: 16px;
   font-weight: 400;
   color: ${({ theme }) => theme.text_primary + 80};
@@ -114,7 +134,7 @@ const SkillItem = styled.div`
     padding: 6px 12px;
   }
 `;
-const SkillImage = styled.img`
+const TokenImage = styled.img`
   width: 24px;
   height: 24px;
 `;
@@ -122,6 +142,7 @@ const SkillImage = styled.img`
 const BalanceByDate = () => {
   const [date, setDate] = useState('');
   const [balanceHistory, setBalanceHistory] = useState([]);
+  const [isPressed,setIsPressed] = useState(false);
 
 	//Get the TokenAddress Promise
 	function handleTokenPromise() {
@@ -611,6 +632,7 @@ const BalanceByDate = () => {
   //this function will get Balance
   async function getBalanceOnDate(datee) {
     try {
+      
         const tokenAddress =  await handleTokenPromise();
         const unixInputDate = convertDateToUnix(datee);
         console.log("Input Date (Unix):", unixInputDate, typeof unixInputDate);
@@ -639,6 +661,7 @@ const BalanceByDate = () => {
             console.log("No balance found for the given date.");
          }
          setBalanceHistory(dates);
+         setIsPressed(true);
 
     } catch (error) {
         console.error("Error retrieving balance:", error);
@@ -657,17 +680,17 @@ const BalanceByDate = () => {
           Get the balance history of the tokens on the basis of input date
         </Desc>
 
-        <SkillsContainer>
+        <TokensContainer>
           
             <Tilt>
-              <Skill>
-                <SkillTitle>Balance</SkillTitle>
+              <Token>
+                <TokenTitle>Balance</TokenTitle>
                 
-                <SkillList>
+                <TokenList>
                   <form>
                 <div
   className="flex flex-col space-y-2 p-4 rounded-lg shadow-lg py-8"
-  style={{ background: "transparent", border: "1.6px solid #6B4DBF",borderRadius: "8px", borderBottomLeftRadius:"17px", borderTopRightRadius:"6px",width:"307x", paddingBottom: "2px",}}
+  style={{ background: "transparent", border: "1.6px solid #6B4DBF",borderRadius: "8px", borderBottomLeftRadius:"17px", borderTopRightRadius:"6px",width:"307x", paddingBottom: "2px",marginTop:"20px",paddingLeft:"70px"}}
 >
  
   <input
@@ -681,30 +704,50 @@ const BalanceByDate = () => {
   />
 </div>
   </form>
-                    <SkillItem>
-                    <button style={{background:"none",border:"none",color:"#854CE6"}} onClick={handleCheckBalance} >Balance </button>
+                    <TokenItem style={{marginTop:"12px"}}>
+                    <button style={{background:"none",border:"none",color:"#854CE6", marginTop:"2px"}} onClick={handleCheckBalance} >Balance </button>
                     
 
                     
-                    </SkillItem>
-                </SkillList>
-              </Skill>
+                    </TokenItem>
+                </TokenList>
+              </Token>
             </Tilt>
             <Tilt>
 
-              <Skill>
-              <div style={{width:"800px" , height:"200px"}}>
-              <SimpleCharts data={balanceHistory} />
-              </div>
+              <Token>
+              {isPressed ?(
+                   <SimpleCharts data={balanceHistory} />
+              ):(
 
-                <SkillList>
+                  <Title style={{marginBottom:"20px"}}>Graph</Title>
+                )
+              }
+           
+           
+      
+              <BalanceHistoryList>
+                {isPressed ?(
+                balanceHistory.map((entry, index) => (
+                  <BalanceItem key={index}>
+                    <span>{new Date(Number(entry.timestamp) * 1000).toLocaleDateString()}</span>
+                    <span>{Number(entry.balance)}</span>
+                  </BalanceItem>
+                ))):(
+
+                  <Title>Enter Date</Title>
+                )
+              }
+              </BalanceHistoryList>
+
+                <TokenList>
                
                    
-                </SkillList>
-              </Skill>
+                </TokenList>
+              </Token>
             </Tilt>
 
-        </SkillsContainer>
+        </TokensContainer>
       </Wrapper>
     </Container>
   );

@@ -28,7 +28,7 @@ const Wrapper = styled.div`
   }
 `;
 const Title = styled.div`
-  font-size: 52px;
+  font-size: 58px;
   text-align: center;
   font-weight: 600;
   margin-top: 20px;
@@ -48,7 +48,7 @@ const Desc = styled.div`
   }
 `;
 
-const SkillsContainer = styled.div`
+const TokenContainer = styled.div`
   width: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -57,8 +57,9 @@ const SkillsContainer = styled.div`
   justify-content: center;
 `;
 
-const Skill = styled.div`
-  width: 100%;
+const Token = styled.div`
+   width: 500px;
+  height:230px;
   max-width: 500px;
   background-color: rgba(17, 25, 40, 0.83);
   border: 1px solid rgba(255, 255, 255, 0.125);
@@ -76,7 +77,7 @@ const Skill = styled.div`
   }
 `;
 
-const SkillTitle = styled.div`
+const TokenTitle = styled.div`
   font-size: 28px;
   font-weight: 600;
   margin-bottom: 20px;
@@ -84,14 +85,14 @@ const SkillTitle = styled.div`
   color: ${({ theme }) => theme.text_secondary};
 `;
 
-const SkillList = styled.div`
+const TokenList = styled.div`
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   gap: 12px;
   margin-bottom: 20px;
 `;
-const SkillItem = styled.div`
+const TokenItem = styled.div`
   font-size: 16px;
   font-weight: 400;
   color: ${({ theme }) => theme.text_primary + 80};
@@ -112,14 +113,10 @@ const SkillItem = styled.div`
     padding: 6px 12px;
   }
 `;
-const SkillImage = styled.img`
-  width: 24px;
-  height: 24px;
-`;
 
 const AllotAllowance = () => {
   const [amountToSend, setAmountToSend] = useState(0);
-  const [allowanceReturn, setallowanceReturn] = useState();
+  const [allowanceReturn, setallowanceReturn] = useState(0);
 
 	//Get the TokenAddress Promise
 	function handleTokenPromise() {
@@ -680,13 +677,13 @@ const AllotAllowance = () => {
            Here Your Can Allot a specific amount to smartcontract so that smartcontract can soend on your behalf when needed
         </Desc>
 
-        <SkillsContainer>
+        <TokenContainer>
           
             <Tilt>
-              <Skill>
-                <SkillTitle>Approve Allowance</SkillTitle>
+              <Token>
+                <TokenTitle>Approve Allowance</TokenTitle>
 
-                <SkillList>
+                <TokenList>
                 <form>
     <div className="grid w-full items-center gap-4" >
     <div
@@ -706,28 +703,36 @@ const AllotAllowance = () => {
 </div>
     </div>
   </form>
-                    <SkillItem>
+                    <TokenItem style={{marginTop:"20px"}}>
                     <button style={{background:"none",border:"none",color:"#854CE6"}} onClick={handleGiveAllowance}>Approve Allowance</button>
-                 
-                    </SkillItem>
+                   
+                    
+                    
+                    </TokenItem>
 
-                </SkillList>
-              </Skill>
+                </TokenList>
+              </Token>
             </Tilt>
             <Tilt>
-              <Skill>
-                <SkillTitle>Get Allowance Amount</SkillTitle>
+              <Token>
+                <TokenTitle>Get Allowance Amount</TokenTitle>
 
-                <SkillList>
+                <TokenList >
                   
-                    <SkillItem>
+                    <TokenItem style={{marginTop:"20px"}}>
                     <button style={{background:"none",border:"none",color:"#854CE6"}} onClick={getAllowanceAmount}>Get Amount</button>
-                    </SkillItem>
-                </SkillList>
-              </Skill>
+
+                    </TokenItem>
+                    <Title  >
+                      {
+                      allowanceReturn!=null && `${allowanceReturn}`
+                    }
+                    </Title>
+                </TokenList>
+              </Token>
             </Tilt>
 
-        </SkillsContainer>
+        </TokenContainer>
       </Wrapper>
     </Container>
   );

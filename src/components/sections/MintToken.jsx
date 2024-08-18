@@ -44,7 +44,7 @@ const Wrapper = styled.div`
   }
 `;
 const Title = styled.div`
-  font-size: 52px;
+  font-size: 58px;
   text-align: center;
   font-weight: 600;
   margin-top: 20px;
@@ -65,7 +65,7 @@ const Desc = styled.div`
 `;
 
 const TokenContainer = styled.div`
-  width: 100%;
+  width: 350px;
   display: flex;
   flex-wrap: wrap;
   margin-top: 20px;
@@ -74,8 +74,10 @@ const TokenContainer = styled.div`
 `;
 
 const Token = styled.div`
-  width: 100%;
+
   max-width: 500px;
+   width: 500px;
+  height:230px;
   background-color: rgba(17, 25, 40, 0.83);
   border: 1px solid rgba(255, 255, 255, 0.125);
   box-shadow: rgba(23, 92, 230, 0.15) 0px 4px 24px;
@@ -128,10 +130,7 @@ const TokenItem = styled.div`
     padding: 6px 12px;
   }
 `;
-const TokenImage = styled.img`
-  width: 24px;
-  height: 24px;
-`;
+
 
 const MintToken = () => {
   const [addedWatchlistToken, setAddedWatchlistToken] = useState(false);
@@ -673,9 +672,9 @@ const MintToken = () => {
         <TokenContainer>
         <Tilt>
             <Token>
-              <TokenTitle>Mint</TokenTitle>
+              <TokenTitle style={{marginTop:"10px",fontSize:"40px"}}>Mint</TokenTitle>
               <TokenList>
-                  <TokenItem>
+                  <TokenItem style={{marginTop:"40px"}}>
                     {!isMinting?(
                     <button style={{background:"none",border:"none",color:"#854CE6"}} onClick={addTokenToWatchlist}>Mint Tokens</button>
                     ):(

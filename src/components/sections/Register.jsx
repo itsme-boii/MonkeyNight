@@ -44,7 +44,7 @@ const Wrapper = styled.div`
   }
 `;
 const Title = styled.div`
-  font-size: 52px;
+  font-size: 58px;
   text-align: center;
   font-weight: 600;
   margin-top: 20px;
@@ -65,7 +65,7 @@ const Desc = styled.div`
 `;
 
 const TokensContainer = styled.div`
-  width: 150px;
+  width: 350px;
   display: flex;
   flex-wrap: wrap;
   margin-top: 20px;
@@ -74,7 +74,8 @@ const TokensContainer = styled.div`
 `;
 
 const Token = styled.div`
-  width: 100%;
+  width: 500px;
+  height:230px;
   max-width: 500px;
   background-color: rgba(17, 25, 40, 0.83);
   border: 1px solid rgba(255, 255, 255, 0.125);
@@ -93,9 +94,9 @@ const Token = styled.div`
 `;
 
 const TokenTitle = styled.div`
-  font-size: 28px;
+  font-size: 38px;
   font-weight: 600;
-  margin-bottom: 20px;
+  margin-bottom: 29px;
   text-align: center;
   color: ${({ theme }) => theme.text_secondary};
 `;
@@ -272,7 +273,7 @@ const Register = () => {
               <Token>
                 <TokenTitle>Register</TokenTitle>
 
-                <TokenList>
+                <TokenList style={{marginTop:"50px"}}>
                     <TokenItem>
                     {!isRegistered ? (
                     isRegistering ? (

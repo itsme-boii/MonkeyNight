@@ -44,7 +44,7 @@ const Wrapper = styled.div`
   }
 `;
 const Title = styled.div`
-  font-size: 52px;
+  font-size: 58px;
   text-align: center;
   font-weight: 600;
   margin-top: 20px;
@@ -74,7 +74,8 @@ const TokensContainer = styled.div`
 `;
 
 const Token = styled.div`
-  width: 100%;
+   width: 500px;
+  height:280px;
   max-width: 500px;
   background-color: rgba(17, 25, 40, 0.83);
   border: 1px solid rgba(255, 255, 255, 0.125);
@@ -707,7 +708,7 @@ const TransferTokens = () => {
                             style={{color:"#854CE6",width: "250px",width:"240px",background:"transparent",border:"none",paddingLeft: "82px",paddingBottom: "8px",border:"none", boxShadow: "none", outline:"none"}}
                         />
                     </div>
-                    <div className="flex flex-col space-y-2 p-4 rounded-lg shadow-lg py-8" style={{ background: "transparent", border: "1.6px solid #6B4DBF",borderRadius: "8px", borderBottomLeftRadius:"17px", borderTopRightRadius:"6px",width:"307x", paddingBottom: "2px",paddingLeft:"70px"}}>
+                    <div className="flex flex-col space-y-2 p-4 rounded-lg shadow-lg py-8" style={{ background: "transparent", border: "1.6px solid #6B4DBF",borderRadius: "8px", borderBottomLeftRadius:"17px", borderTopRightRadius:"6px",width:"307x", paddingBottom: "2px",paddingLeft:"70px",marginTop:"20px"}}>
                       <input
                         placeholder="Amount"
                         type="text"
@@ -720,7 +721,7 @@ const TransferTokens = () => {
                       </div>
                   </div>
                   </form>
-                  <TokenItem>
+                  <TokenItem style={{marginTop:"12px"}}>
                     <button  style={{background:"none",border:"none",color:"#854CE6"}}  onClick={handleToTransfer} disabled={isTransfering}>
                     {isTransfering ? (
                         <>
