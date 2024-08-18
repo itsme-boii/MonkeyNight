@@ -48,7 +48,7 @@ export default function SimpleCharts({ data }) {
           data: balanceArray,
         },
       ]}
-      width={500}
+      width={100}
       height={300}
     />
   );
