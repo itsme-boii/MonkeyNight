@@ -48,8 +48,8 @@ export default function SimpleCharts({ data }) {
           data: balanceArray,
         },
       ]}
-      width={100}
-      height={300}
+      width={230}
+      height={250}
     />
   );
 }

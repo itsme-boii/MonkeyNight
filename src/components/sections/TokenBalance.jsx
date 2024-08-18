@@ -629,7 +629,7 @@ const TokenBalance = () => {
                 </TokenList>
                 {balance !== null && (
                 <TokenItem>
-                  <span>Current Balance: {balance}</span>
+                  <span>Current Balance: {balance!=null && `${balance}`}</span>
                 </TokenItem>
               )}
               </Token>

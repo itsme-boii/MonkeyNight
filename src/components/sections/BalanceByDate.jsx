@@ -54,7 +54,7 @@ const SkillsContainer = styled.div`
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  margin-top: 20px;
+  margin-top: 30px;
   gap: 50px;
   justify-content: center;
 `;
@@ -683,6 +683,7 @@ const BalanceByDate = () => {
   </form>
                     <SkillItem>
                     <button style={{background:"none",border:"none",color:"#854CE6"}} onClick={handleCheckBalance} >Balance </button>
+                    
 
                     
                     </SkillItem>
@@ -692,8 +693,9 @@ const BalanceByDate = () => {
             <Tilt>
 
               <Skill>
-              
+              <div style={{width:"800px" , height:"200px"}}>
               <SimpleCharts data={balanceHistory} />
+              </div>
 
                 <SkillList>
                
