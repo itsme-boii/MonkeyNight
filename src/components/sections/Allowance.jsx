@@ -116,7 +116,8 @@ const TokenItem = styled.div`
 
 const AllotAllowance = () => {
   const [amountToSend, setAmountToSend] = useState(0);
-  const [allowanceReturn, setallowanceReturn] = useState(0);
+  const [allowanceReturn, setAllowanceReturn] = useState(0);
+  const [allowanceAmount, setAllowanceAmount] = useState(0);
 
 	//Get the TokenAddress Promise
 	function handleTokenPromise() {
@@ -136,9 +137,6 @@ const AllotAllowance = () => {
 			alert('Please enter amount');
 		}
 	};
-
-
-     
 
   const tokenManagerAbi =[
     {
@@ -596,23 +594,6 @@ const AllotAllowance = () => {
 
   const web3 = new Web3(Web3.givenProvider || 'https://sepolia.drpc.org');
 
-  
-  async function getAllowanceAmount(){
-		try {
-			const tokenAddress =  await handleTokenPromise();	
-    
-			const tokenManagerInstance = new web3.eth.Contract(tokenManagerAbi, tokenAddress);
-			console.log("token Address is: ",tokenAddress);
-        	let aa = await tokenManagerInstance.methods.checkAllowance().call();
-			console.log("allowance amount is: ",aa['allowance']);
-			// console.log("balance is",balanceee[balanceee.length-1][1]);
-			if (aa['allowance']!=undefined && aa['allowance']==null){
-				setallowanceReturn(aa['allowance']);
-			}
-    	} catch (error) {
-        	console.error("Error getting Allowance Amount:", error);
-    	}
-	};
 
   async function allowAllowance(amountToSend){
 		try {
@@ -634,6 +615,7 @@ const AllotAllowance = () => {
 				gas: String(gasEstimate),
 				gasPrice: '800000', 
 			};
+      setAmountToSend(0);
 
 		
 			const txHash = await window.ethereum.request({
@@ -651,7 +633,6 @@ const AllotAllowance = () => {
 	
 				if (receipt !== null) {
 					console.log("Transaction successful with receipt: ", receipt);
-					// setLoading(false);
 				
 				} else {
 					console.log("Waiting for transaction to be mined...");
@@ -663,6 +644,23 @@ const AllotAllowance = () => {
 			console.error("Error getting contract address:", error);
 		}
    	};
+
+
+	async function getAllowanceAmount(){
+		try {
+			const tokenAddress =  await handleTokenPromise();	
+			const tokenManagerInstance = new web3.eth.Contract(tokenManagerAbi, tokenAddress);
+			console.log("token Address is: ",tokenAddress);
+      let aa = await tokenManagerInstance.methods.checkAllowance().call();
+			console.log("allowance amount is: ",aa['allowance']);
+			// console.log("balance is",balanceee[balanceee.length-1][1]);
+			if (aa['allowance']!=undefined && aa['allowance']==null){
+				setAllowanceReturn(aa['allowance']);
+			}
+    	} catch (error) {
+         console.error("Error getting Allowance Amount:", error);
+    	}
+	};
 
  
   return (
@@ -705,9 +703,6 @@ const AllotAllowance = () => {
   </form>
                     <TokenItem style={{marginTop:"20px"}}>
                     <button style={{background:"none",border:"none",color:"#854CE6"}} onClick={handleGiveAllowance}>Approve Allowance</button>
-                   
-                    
-                    
                     </TokenItem>
 
                 </TokenList>
@@ -721,12 +716,10 @@ const AllotAllowance = () => {
                   
                     <TokenItem style={{marginTop:"20px"}}>
                     <button style={{background:"none",border:"none",color:"#854CE6"}} onClick={getAllowanceAmount}>Get Amount</button>
-
                     </TokenItem>
-                    <Title  >
-                      {
-                      allowanceReturn!=null && `${allowanceReturn}`
-                    }
+            
+                    <Title>
+                          {`${allowanceReturn}`}
                     </Title>
                 </TokenList>
               </Token>

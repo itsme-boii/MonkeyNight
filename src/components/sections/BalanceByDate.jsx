@@ -720,7 +720,7 @@ const BalanceByDate = () => {
                    <SimpleCharts data={balanceHistory} />
               ):(
 
-                  <Title style={{marginBottom:"20px"}}>Graph</Title>
+                  <Title style={{marginBottom:"20px",fontSize:"26px"}}>Graph</Title>
                 )
               }
            
@@ -735,7 +735,7 @@ const BalanceByDate = () => {
                   </BalanceItem>
                 ))):(
 
-                  <Title>Enter Date</Title>
+                  <Title style={{marginBottom:"20px",fontSize:"26px"}}>Enter Date</Title>
                 )
               }
               </BalanceHistoryList>
