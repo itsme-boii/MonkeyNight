@@ -31,3 +31,14 @@ This project is a React website designed to handle token management, including f
    ```bash
    git clone https://github.com/your-username/responsive-react-website.git
    cd responsive-react-website
+
+
+2. **Install dependencies**:
+   ```bash
+   npm install
+
+
+3. **Run Deplyoment server**:
+   ```bash
+   npm run start
+
