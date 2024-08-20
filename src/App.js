@@ -10,6 +10,7 @@ import MintToken from "./components/sections/MintToken.jsx";
 import AllotAllowance from "./components/sections/Allowance.jsx";
 import TokenBalance from "./components/sections/TokenBalance.jsx";
 import BalanceByDate from "./components/sections/BalanceByDate.jsx";
+import "./index.css";
 
 const Body = styled.div`
   background-color: ${({ theme }) => theme.bg};
@@ -38,12 +39,14 @@ const Wrapper = styled.div`
 
 function App() {
   return (
+  
     <ThemeProvider theme={darkTheme}>
       <BrowserRouter>
+      <div className="Main" >
         <Navbar />
         <Body>
           <StartCanvas />
-          <div>
+         
             <Dashbord />
            <Wrapper>
               <Register />
@@ -53,8 +56,9 @@ function App() {
               <TokenBalance/>  
               <BalanceByDate/>
             </Wrapper>
-          </div>
+         
         </Body>
+        </div>
       </BrowserRouter>
     </ThemeProvider>
   

@@ -23,7 +23,6 @@ const Nav = styled.div`
 const NavbarContainer = styled.div`
   width:100%;
   max-width: 2400px;
-
   padding: -8px;
   display: flex;
   align-items: center;
