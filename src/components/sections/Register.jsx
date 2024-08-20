@@ -24,8 +24,8 @@ const Container = styled.div`
   flex-direction: column;
   justify-contnet: center;
   position: relative;
-  padding: 150px 0;
-  top:-20px;
+  padding: 390px 0;
+  top:-50px;
   z-index: 1;
   align-items: center;
 `;
@@ -38,16 +38,16 @@ const Wrapper = styled.div`
   flex-direction: column;
   width: 100%;
   max-width: 1100px;
-  gap: 12px;
+  gap: 17px;
   @media (max-width: 960px) {
     flex-direction: column;
   }
 `;
 const Title = styled.div`
-  font-size: 58px;
+  font-size: 78px;
   text-align: center;
   font-weight: 600;
-  margin-top: 20px;
+  margin-top: -47px;
   color: ${({ theme }) => theme.text_primary};
   @media (max-width: 768px) {
     margin-top: 12px;
@@ -55,7 +55,7 @@ const Title = styled.div`
   }
 `;
 const Desc = styled.div`
-  font-size: 18px;
+  font-size: 28px;
   text-align: center;
   font-weight: 600;
   color: ${({ theme }) => theme.text_secondary};
@@ -74,9 +74,9 @@ const TokensContainer = styled.div`
 `;
 
 const Token = styled.div`
-  width: 500px;
-  height:230px;
-  max-width: 500px;
+  width: 700px;
+  height:300px;
+  max-width: 1000px;
   background-color: rgba(17, 25, 40, 0.83);
   border: 1px solid rgba(255, 255, 255, 0.125);
   box-shadow: rgba(23, 92, 230, 0.15) 0px 4px 24px;
@@ -94,7 +94,7 @@ const Token = styled.div`
 `;
 
 const TokenTitle = styled.div`
-  font-size: 38px;
+  font-size: 55px;
   font-weight: 600;
   margin-bottom: 29px;
   text-align: center;
@@ -109,30 +109,29 @@ const TokenList = styled.div`
   margin-bottom: 20px;
 `;
 const TokenItem = styled.div`
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 400;
   color: ${({ theme }) => theme.text_primary + 80};
   border: 1px solid ${({ theme }) => theme.text_primary + 80};
   border-radius: 12px;
-  padding: 12px 16px;
+  padding: 25px 40px;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
+  width:260px;
+  height:90px;
 
   @media (max-width: 768px) {
-    font-size: 14px;
+    font-size: 18px;
     padding: 8px 12px;
   }
   @media (max-width: 500px) {
-    font-size: 14px;
+    font-size: 18px;
     padding: 6px 12px;
   }
 `;
-const TokenImage = styled.img`
-  width: 24px;
-  height: 24px;
-`;
+
 
 const Register = () => {
   const [addedUserToken, setAddedUserToken] = useState(false);
@@ -264,7 +263,7 @@ const Register = () => {
             marginBottom: "40px",
           }}
         >
-          Click the button below to register in UserPool and create your token collection!
+         Register in our UserPool by clicking the button below to instantly create your personalized token collection! This quick and easy process sets you up to manage and interact with your tokens effortlessly.
         </Desc>
 
         <TokensContainer>
@@ -273,7 +272,7 @@ const Register = () => {
               <Token>
                 <TokenTitle>Register</TokenTitle>
 
-                <TokenList style={{marginTop:"50px"}}>
+                <TokenList style={{marginTop:"94px"}}>
                     <TokenItem>
                     {!isRegistered ? (
                     isRegistering ? (
@@ -283,7 +282,7 @@ const Register = () => {
                       </>
                     ) : (
                       <button
-                        style={{ background: "none", border: "none", color: "#854CE6" }}
+                        style={{ background: "none", border: "none", color: "#854CE6",fontSize:"29px" }}
                         onClick={addTokenToUser}
                       >
                         Add To Pool
@@ -291,7 +290,7 @@ const Register = () => {
                     )
                   ) : (
                     <button
-                      style={{ background: "none", border: "none", color: "#854CE6" }}
+                      style={{ background: "none", border: "none", color: "#854CE6",fontSize:"29px" }}
                       disabled
                     >
                       Registered

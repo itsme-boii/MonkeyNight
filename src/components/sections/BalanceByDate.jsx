@@ -29,8 +29,8 @@ const Container = styled.div`
   flex-direction: column;
   justify-contnet: center;
   position: relative;
-  padding: 150px 0;
-  top:-50px;
+padding: 310px 0;
+  top:-199px;
   z-index: 1;
   align-items: center;
 `;
@@ -49,7 +49,7 @@ const Wrapper = styled.div`
   }
 `;
 const Title = styled.div`
-  font-size: 58px;
+  font-size: 78px;
   text-align: center;
   font-weight: 600;
   margin-top: 20px;
@@ -60,7 +60,7 @@ const Title = styled.div`
   }
 `;
 const Desc = styled.div`
-  font-size: 18px;
+  font-size: 28px;
   text-align: center;
   font-weight: 600;
   color: ${({ theme }) => theme.text_secondary};
@@ -72,16 +72,15 @@ const Desc = styled.div`
 const TokensContainer = styled.div`
   width: 100%;
   display: flex;
-  flex-wrap: wrap;
   margin-top: 30px;
   gap: 50px;
   justify-content: center;
 `;
 
 const Token = styled.div`
-   width: 500px;
-  height:230px;
-  max-width: 500px;
+  width: 600px;
+  height:360px;
+  max-width: 1000px;
   background-color: rgba(17, 25, 40, 0.83);
   border: 1px solid rgba(255, 255, 255, 0.125);
   box-shadow: rgba(23, 92, 230, 0.15) 0px 4px 24px;
@@ -99,7 +98,7 @@ const Token = styled.div`
 `;
 
 const TokenTitle = styled.div`
-  font-size: 28px;
+  font-size: 40px;
   font-weight: 600;
   margin-bottom: 20px;
   text-align: center;
@@ -114,7 +113,7 @@ const TokenList = styled.div`
   margin-bottom: 20px;
 `;
 const TokenItem = styled.div`
-  font-size: 16px;
+  font-size: 55px;
   font-weight: 400;
   color: ${({ theme }) => theme.text_primary + 80};
   border: 1px solid ${({ theme }) => theme.text_primary + 80};
@@ -134,10 +133,7 @@ const TokenItem = styled.div`
     padding: 6px 12px;
   }
 `;
-const TokenImage = styled.img`
-  width: 24px;
-  height: 24px;
-`;
+
 
 const BalanceByDate = () => {
   const [date, setDate] = useState('');
@@ -680,19 +676,17 @@ const BalanceByDate = () => {
           Get the balance history of the tokens on the basis of input date
         </Desc>
 
-        <TokensContainer>
-          
+        <TokensContainer>  
             <Tilt>
               <Token>
                 <TokenTitle>Balance</TokenTitle>
-                
                 <TokenList>
                   <form>
                 <div
   className="flex flex-col space-y-2 p-4 rounded-lg shadow-lg py-8"
-  style={{ background: "transparent", border: "1.6px solid #6B4DBF",borderRadius: "8px", borderBottomLeftRadius:"17px", borderTopRightRadius:"6px",width:"307x", paddingBottom: "2px",marginTop:"20px",paddingLeft:"70px"}}
+  style={{ background: "transparent", border: "1.6px solid #6B4DBF",borderRadius: "8px", borderBottomLeftRadius:"17px", borderTopRightRadius:"6px",width:"307x", paddingBottom: "2px",marginTop:"30px",paddingLeft:"70px"}}
 >
- 
+
   <input
     placeholder="Date"
     type="date"
@@ -700,15 +694,13 @@ const BalanceByDate = () => {
     value={date}
     onChange={(e) => setDate(e.target.value)}
     className="p-2 rounded-md border focus:outline-none focus:ring-0  "
-    style={{color:"#854CE6",width: "250px",width:"240px",background:"transparent",border:"none",paddingLeft: "82px",paddingBottom: "8px",border:"none", boxShadow: "none", outline:"none"}}
+    style={{fontSize:"20px",color:"#854CE6",width:"340px",background:"transparent",border:"none",paddingLeft: "79px",paddingBottom: "8px",border:"none", boxShadow: "none", outline:"none",height:"60px"}}
   />
 </div>
   </form>
-                    <TokenItem style={{marginTop:"12px"}}>
-                    <button style={{background:"none",border:"none",color:"#854CE6", marginTop:"2px"}} onClick={handleCheckBalance} >Balance </button>
-                    
+                    <TokenItem style={{marginTop:"80px"}}>
+                    <button style={{background:"none",border:"none",color:"#854CE6", marginTop:"1px",width:"130px",fontSize:"26px"}} onClick={handleCheckBalance} >Balance </button>
 
-                    
                     </TokenItem>
                 </TokenList>
               </Token>
@@ -720,13 +712,11 @@ const BalanceByDate = () => {
                    <SimpleCharts data={balanceHistory} />
               ):(
 
-                  <Title style={{marginBottom:"20px",fontSize:"26px"}}>Graph</Title>
+                  <Title style={{marginBottom:"20px",fontSize:"48px"}}>Graph</Title>
                 )
               }
-           
-           
-      
-              <BalanceHistoryList>
+
+              <BalanceHistoryList style={{marginTop:"100px"}}>
                 {isPressed ?(
                 balanceHistory.map((entry, index) => (
                   <BalanceItem key={index}>
@@ -739,10 +729,7 @@ const BalanceByDate = () => {
                 )
               }
               </BalanceHistoryList>
-
-                <TokenList>
-               
-                   
+                <TokenList> 
                 </TokenList>
               </Token>
             </Tilt>

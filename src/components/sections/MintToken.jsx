@@ -24,8 +24,8 @@ const Container = styled.div`
   flex-direction: column;
   justify-contnet: center;
   position: relative;
-    padding: 150px 0;
-  top:-50px;
+    padding: 310px 0;
+  top:10px;
   z-index: 1;
   align-items: center;
 `;
@@ -44,7 +44,7 @@ const Wrapper = styled.div`
   }
 `;
 const Title = styled.div`
-  font-size: 58px;
+    font-size: 78px;
   text-align: center;
   font-weight: 600;
   margin-top: 20px;
@@ -55,7 +55,7 @@ const Title = styled.div`
   }
 `;
 const Desc = styled.div`
-  font-size: 18px;
+   font-size: 28px;
   text-align: center;
   font-weight: 600;
   color: ${({ theme }) => theme.text_secondary};
@@ -65,7 +65,7 @@ const Desc = styled.div`
 `;
 
 const TokenContainer = styled.div`
-  width: 350px;
+  width: 300px;
   display: flex;
   flex-wrap: wrap;
   margin-top: 20px;
@@ -75,9 +75,9 @@ const TokenContainer = styled.div`
 
 const Token = styled.div`
 
-  max-width: 500px;
-   width: 500px;
-  height:230px;
+  max-width: 800px;
+   width: 700px;
+  height:300px;
   background-color: rgba(17, 25, 40, 0.83);
   border: 1px solid rgba(255, 255, 255, 0.125);
   box-shadow: rgba(23, 92, 230, 0.15) 0px 4px 24px;
@@ -95,9 +95,10 @@ const Token = styled.div`
 `;
 
 const TokenTitle = styled.div`
-  font-size: 28px;
+  font-size: 55px;
+
   font-weight: 600;
-  margin-bottom: 20px;
+  margin-bottom: 80px;
   text-align: center;
   color: ${({ theme }) => theme.text_secondary};
 `;
@@ -110,16 +111,18 @@ const TokenList = styled.div`
   margin-bottom: 20px;
 `;
 const TokenItem = styled.div`
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 400;
   color: ${({ theme }) => theme.text_primary + 80};
   border: 1px solid ${({ theme }) => theme.text_primary + 80};
   border-radius: 12px;
-  padding: 12px 16px;
+  padding: 25px 40px;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
+   width:260px;
+  height:90px;
 
   @media (max-width: 768px) {
     font-size: 14px;
@@ -669,14 +672,14 @@ const MintToken = () => {
         <Desc style={{marginBottom: "40px",}}>
          To mint the deployed token in your account, please note that only the owner of the token contract has the authority to perform the minting process. Ensure that you are the contract owner before attempting to mint new tokens.
         </Desc>
-        <TokenContainer>
+        <TokenContainer style={{width:"40px"}}>
         <Tilt>
             <Token>
-              <TokenTitle style={{marginTop:"10px",fontSize:"40px"}}>Mint</TokenTitle>
+              <TokenTitle style={{marginTop:"3px",fontSize:"55px"}}>Mint</TokenTitle>
               <TokenList>
-                  <TokenItem style={{marginTop:"40px"}}>
+                  <TokenItem style={{marginTop:"12px"}}>
                     {!isMinting?(
-                    <button style={{background:"none",border:"none",color:"#854CE6"}} onClick={addTokenToWatchlist}>Mint Tokens</button>
+                    <button style={{background:"none",border:"none",color:"#854CE6",fontSize:"29px"}} onClick={addTokenToWatchlist}>Mint Tokens</button>
                     ):(
                       <>
                       Minting

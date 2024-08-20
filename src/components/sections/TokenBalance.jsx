@@ -9,8 +9,8 @@ const Container = styled.div`
   flex-direction: column;
   justify-contnet: center;
   position: relative;
-  padding: 150px 0;
-  top:-50px;
+  padding: 310px 0;
+  top:-60px;
   z-index: 1;
   align-items: center;
 `;
@@ -29,7 +29,7 @@ const Wrapper = styled.div`
   }
 `;
 const Title = styled.div`
-  font-size: 58px;
+  font-size: 78px;
   text-align: center;
   font-weight: 600;
   margin-top: 20px;
@@ -40,7 +40,7 @@ const Title = styled.div`
   }
 `;
 const Desc = styled.div`
-  font-size: 18px;
+  font-size: 28px;
   text-align: center;
   font-weight: 600;
   color: ${({ theme }) => theme.text_secondary};
@@ -50,7 +50,7 @@ const Desc = styled.div`
 `;
 
 const TokensContainer = styled.div`
-  width: 100%;
+  width: 300px;
   display: flex;
   flex-wrap: wrap;
   margin-top: 20px;
@@ -59,9 +59,9 @@ const TokensContainer = styled.div`
 `;
 
 const Token = styled.div`
-  width: 500px;
-  height:230px;
-  max-width: 500px;
+  width: 600px;
+  height:370px;
+  max-width: 1000px;
   background-color: rgba(17, 25, 40, 0.83);
   border: 1px solid rgba(255, 255, 255, 0.125);
   box-shadow: rgba(23, 92, 230, 0.15) 0px 4px 24px;
@@ -79,7 +79,7 @@ const Token = styled.div`
 `;
 
 const TokenTitle = styled.div`
-  font-size: 28px;
+  font-size: 40px;
   font-weight: 600;
   margin-bottom: 20px;
   text-align: center;
@@ -114,13 +114,9 @@ const TokenItem = styled.div`
     padding: 6px 12px;
   }
 `;
-const TokenImage = styled.img`
-  width: 24px;
-  height: 24px;
-`;
 
 const TokenBalance = () => {
-  const [balance, setBalance] = useState(0);
+  const [balance, setBalance] = useState();
   
 
 	//Get the TokenAddress Promise
@@ -623,16 +619,17 @@ const TokenBalance = () => {
               <Token>
                 <TokenTitle> Balance</TokenTitle>
                 <TokenList>
-                  <TokenItem>
-                    <button style={{background:"none",border:"none",color:"#854CE6"}} onClick={getTokenBalance}>Balance</button>
-                   
+                {balance !== null && (
+                <TokenTitle style={{paddingLeft:"1px",width:"200px",marginLeft:"380px",paddingRight:"470px",marginTop:"50px",fontSize:"38px"}}>
+                  {balance!=null && `${balance}`}
+                </TokenTitle>
+              )}
+                  <TokenItem style={{marginTop:"51px"}}>
+                    
+                    <button style={{background:"none",border:"none",color:"#854CE6",width:"320px",fontSize:"28px"}} onClick={getTokenBalance}>Balance</button>
                   </TokenItem>
                 </TokenList>
-                {balance !== null && (
-                <TokenItem style={{paddingLeft:"17px",width:"200px",marginLeft:"110px"}}>
-                  <span>{balance!=null && `${balance}`}</span>
-                </TokenItem>
-              )}
+               
               </Token>
             </Tilt>
         </TokensContainer>

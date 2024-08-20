@@ -16,14 +16,13 @@ import Dep from '../DeployFunction';
 const TokenContainer = styled.div`
   display: flex;
   justify-content: center;
-  position: relative;
-  padding: 80px 30px;
-  z-index: 1;
 
+  position: relative;
+  padding: 370px 30px;
+  z-index: 1;
   @media (max-width: 960px) {
     padding: 66px 16px;
   }
-
   @media (max-width: 640px) {
     padding: 32px 16px;
   }
@@ -31,23 +30,26 @@ const TokenContainer = styled.div`
   clip-path: polygon(0 0, 100% 0, 100% 100%, 70% 95%, 0 100%);
 `;
 const TokenInnerContainer = styled.div`
+
   position: relative;
   display: flex;
+  gap:200px;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
-  max-width: 1200px;
-
-
+  width: 2000px;
+  max-width: 2500px;
 `;
+
 const TokenLeftContainer = styled.div`
+margin-top:70px;
   width: 100%;
+   margin-left:20px;
   order: 1;
   @media (max-width: 960px) {
     order: 2;
     margin-bottom: 30px;
     display: flex;
-    gap: 6px;
+    gap: 16px;
     flex-direction: column;
     align-items: center;
   }
@@ -57,17 +59,17 @@ const TokenRightContainer = styled.div`
   order: 2;
   display: flex;
   justify-content: end;
-
-
+  margin-right:80px;
+  margin-top:-80px
 `;
 
 const TextLoop = styled.div`
-  font-weight: 600;
-  font-size: 32px;
+  font-weight: 700;
+  font-size: 92px;
   display: flex;
-  gap: 12px;
+  gap: 16px;
   color: ${({ theme }) => theme.text_primary};
-  line-height: 68px;
+  line-height: 80px;
 
   @media (max-width: 960px) {
     text-align: center;
@@ -86,9 +88,10 @@ const Span = styled.div`
 `;
 
 const SubTitle = styled.div`
-  font-size: 20px;
-  line-height: 32px;
-  margin-bottom: 42px;
+  font-size: 30px;
+  margin-top:40px;
+  line-height: 38px;
+  margin-bottom: 420px;
   color: ${({ theme }) => theme.text_primary + 95};
 
   @media (max-width: 960px) {
@@ -112,11 +115,11 @@ const Dashboard = () => {
             <TokenLeftContainer>
               <motion.div {...headTextAnimation}>
                 <TextLoop>
-                  Deploy your
+                  Deploy 
                   <Span>
                     <Typewriter
                       options={{
-                        strings: "TokenManager",
+                        strings: "Token",
                         autoStart: true,
                         loop: true,
                       }}
@@ -126,7 +129,7 @@ const Dashboard = () => {
               </motion.div>
 
               <motion.div {...headContentAnimation}>
-                <SubTitle>Enter Your TokenName and TokenSymbol to deploy TokenManager that will manage your Token Over Blockchain</SubTitle>
+                <SubTitle>Enter your TokenName and TokenSymbol to deploy the TokenManager, which will manage your token seamlessly over the blockchain.</SubTitle>
               </motion.div>
             </TokenLeftContainer>
             <TokenRightContainer>

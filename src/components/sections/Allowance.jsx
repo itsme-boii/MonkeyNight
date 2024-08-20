@@ -1,15 +1,31 @@
 import Web3 from 'web3';
 import React,{ useState } from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { Tilt } from "react-tilt";
+
+
+const spin = keyframes`
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+`;
+
+const Spinner = styled.div`
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  animation: ${spin} 1s linear infinite;
+  margin-left: 30px;
+`;
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-contnet: center;
   position: relative;
-   padding: 150px 0;
-  top:-20px;
+ padding: 310px 0;
+  top:-200px;
   z-index: 1;
   align-items: center;
 `;
@@ -28,7 +44,7 @@ const Wrapper = styled.div`
   }
 `;
 const Title = styled.div`
-  font-size: 58px;
+  font-size: 78px;
   text-align: center;
   font-weight: 600;
   margin-top: 20px;
@@ -39,7 +55,7 @@ const Title = styled.div`
   }
 `;
 const Desc = styled.div`
-  font-size: 18px;
+  font-size: 28px;
   text-align: center;
   font-weight: 600;
   color: ${({ theme }) => theme.text_secondary};
@@ -49,18 +65,18 @@ const Desc = styled.div`
 `;
 
 const TokenContainer = styled.div`
-  width: 100%;
+ width: 300px;
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap:nowrap ;
   margin-top: 20px;
   gap: 50px;
   justify-content: center;
 `;
 
 const Token = styled.div`
-   width: 500px;
-  height:230px;
-  max-width: 500px;
+ width: 600px;
+  height:360px;
+  max-width: 1000px;
   background-color: rgba(17, 25, 40, 0.83);
   border: 1px solid rgba(255, 255, 255, 0.125);
   box-shadow: rgba(23, 92, 230, 0.15) 0px 4px 24px;
@@ -78,7 +94,7 @@ const Token = styled.div`
 `;
 
 const TokenTitle = styled.div`
-  font-size: 28px;
+  font-size: 40px;
   font-weight: 600;
   margin-bottom: 20px;
   text-align: center;
@@ -89,16 +105,16 @@ const TokenList = styled.div`
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 90px;
   margin-bottom: 20px;
 `;
 const TokenItem = styled.div`
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 400;
   color: ${({ theme }) => theme.text_primary + 80};
   border: 1px solid ${({ theme }) => theme.text_primary + 80};
   border-radius: 12px;
-  padding: 12px 16px;
+  padding: 15px 8px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -115,9 +131,10 @@ const TokenItem = styled.div`
 `;
 
 const AllotAllowance = () => {
-  const [amountToSend, setAmountToSend] = useState(0);
-  const [allowanceReturn, setAllowanceReturn] = useState(0);
+  const [amountToSend, setAmountToSend] = useState();
+  const [allowanceReturn, setAllowanceReturn] = useState('');
   const [allowanceAmount, setAllowanceAmount] = useState(0);
+  const [isdone,setIsdone] = useState(false);
 
 	//Get the TokenAddress Promise
 	function handleTokenPromise() {
@@ -597,6 +614,7 @@ const AllotAllowance = () => {
 
   async function allowAllowance(amountToSend){
 		try {
+      setIsdone(true);
 			const tokenAddress =  await handleTokenPromise();
 			console.log(tokenAddress);
 			const tokenManagerInstance = new web3.eth.Contract(tokenManagerAbi, tokenAddress);
@@ -615,7 +633,7 @@ const AllotAllowance = () => {
 				gas: String(gasEstimate),
 				gasPrice: '800000', 
 			};
-      setAmountToSend(0);
+      setAmountToSend('');
 
 		
 			const txHash = await window.ethereum.request({
@@ -633,6 +651,7 @@ const AllotAllowance = () => {
 	
 				if (receipt !== null) {
 					console.log("Transaction successful with receipt: ", receipt);
+          setIsdone(false);
 				
 				} else {
 					console.log("Waiting for transaction to be mined...");
@@ -643,6 +662,9 @@ const AllotAllowance = () => {
 		} catch (error) {
 			console.error("Error getting contract address:", error);
 		}
+    finally{
+      setIsdone(false);
+    }
    	};
 
 
@@ -653,10 +675,12 @@ const AllotAllowance = () => {
 			console.log("token Address is: ",tokenAddress);
       let aa = await tokenManagerInstance.methods.checkAllowance().call();
 			console.log("allowance amount is: ",aa['allowance']);
+      const balance = aa['allowance'];
 			// console.log("balance is",balanceee[balanceee.length-1][1]);
-			if (aa['allowance']!=undefined && aa['allowance']==null){
-				setAllowanceReturn(aa['allowance']);
+			if (balance!=undefined || balance==null){
+				setAllowanceReturn(balance);
 			}
+      console.log("return is ",allowanceReturn)
     	} catch (error) {
          console.error("Error getting Allowance Amount:", error);
     	}
@@ -672,7 +696,7 @@ const AllotAllowance = () => {
             marginBottom: "40px",
           }}
         >
-           Here Your Can Allot a specific amount to smartcontract so that smartcontract can soend on your behalf when needed
+          Allocate a specific amount of tokens to the smart contract, granting it permission to spend on your behalf whenever necessary
         </Desc>
 
         <TokenContainer>
@@ -686,7 +710,7 @@ const AllotAllowance = () => {
     <div className="grid w-full items-center gap-4" >
     <div
   className="flex flex-col space-y-2 p-4 rounded-lg shadow-lg py-8"
-  style={{ background: "transparent", border: "1.6px solid #6B4DBF",borderRadius: "8px", borderBottomLeftRadius:"17px", borderTopRightRadius:"6px",width:"307x", paddingBottom: "2px",}}
+  style={{ background: "transparent", border: "1.6px solid #6B4DBF",borderRadius: "8px", borderBottomLeftRadius:"17px", borderTopRightRadius:"6px",width:"302px", paddingBottom: "2px",marginTop:"20px",height:"70px"}}
 >
  
   <input
@@ -696,13 +720,22 @@ const AllotAllowance = () => {
     value={amountToSend}
     onChange={(e) => setAmountToSend(e.target.value)}
     className="p-2 rounded-md border focus:outline-none focus:ring-0  "
-    style={{color:"#854CE6",width: "250px",width:"240px",background:"transparent",border:"none",paddingLeft: "82px",paddingBottom: "8px",border:"none", boxShadow: "none", outline:"none"}}
+    style={{color:"#854CE6",width: "280px",height:"70px",background:"transparent",border:"none",paddingLeft: "50px",paddingBottom: "8px",border:"none", boxShadow: "none", outline:"none",fontSize:"20px",marginLeft:"60px"}}
   />
 </div>
     </div>
   </form>
-                    <TokenItem style={{marginTop:"20px"}}>
-                    <button style={{background:"none",border:"none",color:"#854CE6"}} onClick={handleGiveAllowance}>Approve Allowance</button>
+                    <TokenItem style={{marginTop:"-6px"}}>
+                      {!isdone?(
+                    <button style={{background:"none",border:"none",color:"#854CE6",fontSize:"28px"}} onClick={handleGiveAllowance}>Approve Allowance</button>
+
+                      ):(
+                      <>
+                      Approving
+                      <Spinner/>
+                      </>
+                    )
+}
                     </TokenItem>
 
                 </TokenList>
@@ -711,16 +744,19 @@ const AllotAllowance = () => {
             <Tilt>
               <Token>
                 <TokenTitle>Get Allowance Amount</TokenTitle>
-
                 <TokenList >
+
+                {allowanceReturn !== null && (
+                <TokenTitle style={{paddingLeft:"1px",width:"200px",marginLeft:"380px",paddingRight:"470px",marginTop:"50px",fontSize:"38px"}}>
+                  {allowanceReturn!=null && `${allowanceReturn}`}
+
+                </TokenTitle>
+              )}
                   
-                    <TokenItem style={{marginTop:"20px"}}>
-                    <button style={{background:"none",border:"none",color:"#854CE6"}} onClick={getAllowanceAmount}>Get Amount</button>
+                    <TokenItem style={{marginTop:"-45px"}}>
+                    <button style={{background:"none",border:"none",color:"#854CE6",width:"399px",fontSize:"28px"}} onClick={getAllowanceAmount}>Get Amount</button>
                     </TokenItem>
             
-                    <Title>
-                          {`${allowanceReturn}`}
-                    </Title>
                 </TokenList>
               </Token>
             </Tilt>

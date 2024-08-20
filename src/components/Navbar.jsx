@@ -8,7 +8,7 @@ const Nav = styled.div`
   display: flex;
   width:100%
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   font-size: 1rem;
   position: sticky;
   top: 0;
@@ -17,22 +17,25 @@ const Nav = styled.div`
 `;
 
 const NavbarContainer = styled.div`
-  width: 100%;
-  max-width: 1600px;
-  padding: -20px;
+  width:100%;
+  max-width: 2000px;
+  padding: -8px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  font-size: 1rem;
+  justify-content: space-around;
+  font-size: 1.4rem;
 `;
+
 const Title = styled(LinkR)`
-  width: 90%;
-  padding: 0 6px;
+  width: 700px;
+  padding: 0 60px;
+  margin-right:-100px;
   font-weight: 700;
-  font-size: 28px;
+  font-size: 40px;
   text-decoration: none;
   color: inherit;
-  color: 
+   display: flex;
+    white-space: nowrap;
 `;
 
 const NavItems = styled.ul`
@@ -40,9 +43,9 @@ const NavItems = styled.ul`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 60px;
+  gap: 50px;
   scroll-behaviour:smooth;
-  padding: 0 10px;
+  padding: 0 121px;
   list-style: none;
 
   @media screen and (max-width: 768px) {
@@ -62,12 +65,12 @@ const NavLink = styled.a`
 `;
 
 const ButtonContainer = styled.div`
-  width: 80%;
+  width: 100%;
   height: 100%;
   display: flex;
   justify-content: end;
   align-items: center;
-  padding: 0 6px;
+  padding: 0 -10px;
   @media screen and (max-width: 768px) {
     display: none;
   }
@@ -77,12 +80,13 @@ const ConnectButton = styled.a`
   border: 1px solid ${({ theme }) => theme.primary};
   color: ${({ theme }) => theme.primary};
   justify-content: center;
+   list-style: none;
   display: flex;
   align-items: center;
   border-radius: 20px;
   cursor: pointer;
   padding: 10px 20px;
-  font-size: 16px;
+  font-size: 32px;
   font-weight: 500;
   transition: all 0.6s ease-in-out;
   text-decoration: none;
@@ -101,7 +105,7 @@ const ConnectedButton = styled.a`
   border-radius: 20px;
   cursor: pointer;
   padding: 10px 20px;
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 500;
   transition: all 0.6s ease-in-out;
   text-decoration: none;
@@ -176,7 +180,7 @@ const Navbar = () => {
           </ConnectedButton>
         ) : (
           <ConnectButton>
-          <button  style={{ background: 'transparent', border: 'none', color: `#854CE6`}} onClick={connectWallet}>Connect Wallet</button>
+          <button  style={{width:"120px",marginRight:"20px", background: 'transparent', border: 'none', color: `#854CE6`,fontSize:'18px'}} onClick={connectWallet}>Connect</button>
           </ConnectButton>
         )}
         </ButtonContainer>

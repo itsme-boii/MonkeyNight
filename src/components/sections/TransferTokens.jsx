@@ -17,6 +17,7 @@ const Spinner = styled.div`
   height: 24px;
   animation: ${spin} 1s linear infinite;
   margin-left: 30px;
+  margin-right:30px
 `;
 
 const Container = styled.div`
@@ -24,8 +25,8 @@ const Container = styled.div`
   flex-direction: column;
   justify-contnet: center;
   position: relative;
- padding: 150px 0;
-  top:-20px;
+    padding: 310px 0;
+  top:10px;
   z-index: 1;
   align-items: center;
 `;
@@ -44,7 +45,7 @@ const Wrapper = styled.div`
   }
 `;
 const Title = styled.div`
-  font-size: 58px;
+  font-size: 78px;
   text-align: center;
   font-weight: 600;
   margin-top: 20px;
@@ -55,7 +56,7 @@ const Title = styled.div`
   }
 `;
 const Desc = styled.div`
-  font-size: 18px;
+  font-size: 28px;
   text-align: center;
   font-weight: 600;
   color: ${({ theme }) => theme.text_secondary};
@@ -65,7 +66,7 @@ const Desc = styled.div`
 `;
 
 const TokensContainer = styled.div`
-  width: 100%;
+  width: 300px;
   display: flex;
   flex-wrap: wrap;
   margin-top: 20px;
@@ -74,9 +75,9 @@ const TokensContainer = styled.div`
 `;
 
 const Token = styled.div`
-   width: 500px;
-  height:280px;
-  max-width: 500px;
+  width: 700px;
+  height:400px;
+  max-width:1000px;
   background-color: rgba(17, 25, 40, 0.83);
   border: 1px solid rgba(255, 255, 255, 0.125);
   box-shadow: rgba(23, 92, 230, 0.15) 0px 4px 24px;
@@ -94,7 +95,7 @@ const Token = styled.div`
 `;
 
 const TokenTitle = styled.div`
-  font-size: 28px;
+  font-size: 40px;
   font-weight: 600;
   margin-bottom: 20px;
   text-align: center;
@@ -131,7 +132,7 @@ const TokenItem = styled.div`
 `;
 const TransferTokens = () => {
   const [reciverAddress, setReciverAddress] = useState('');
-	const [amountToSend, setAmountToSend] = useState(0);
+	const [amountToSend, setAmountToSend] = useState();
   const [isTransfering,setIsTransfering] = useState(false);
 
 	//Get the TokenAddress Promise
@@ -681,11 +682,7 @@ const TransferTokens = () => {
             marginBottom: "40px",
           }}
         >
-          To transfer your tokens to another address, please enter the recipient's address and the amount you wish to transfer.
-          Receiver Address:(wallet address of the recipient)
-          Amount:(to be Transferred)
-
-          Once you've filled in the details, click the "Transfer" button to complete the transaction.
+         Enter the recipient's wallet address and the amount to transfer, then click the 'Transfer' button to complete the transaction.
         </Desc>
 
         <TokensContainer>
@@ -705,7 +702,7 @@ const TransferTokens = () => {
                             value={reciverAddress}
                             onChange={(e) => setReciverAddress(e.target.value)}
                             className="p-2 rounded-md border focus:outline-none focus:ring-0  "
-                            style={{color:"#854CE6",width: "250px",width:"240px",background:"transparent",border:"none",paddingLeft: "82px",paddingBottom: "8px",border:"none", boxShadow: "none", outline:"none"}}
+                            style={{color:"#854CE6",width: "250px",fontSize:"20px",background:"transparent",border:"none",paddingLeft: "60px",marginLeft: "190px",paddingBottom: "8px",border:"none", boxShadow: "none", outline:"none",height:"70px"}}
                         />
                     </div>
                     <div className="flex flex-col space-y-2 p-4 rounded-lg shadow-lg py-8" style={{ background: "transparent", border: "1.6px solid #6B4DBF",borderRadius: "8px", borderBottomLeftRadius:"17px", borderTopRightRadius:"6px",width:"307x", paddingBottom: "2px",paddingLeft:"70px",marginTop:"20px"}}>
@@ -716,16 +713,16 @@ const TransferTokens = () => {
                         value={amountToSend}
                         onChange={(e) => setAmountToSend(e.target.value)}
                         className="p-2 rounded-md border focus:outline-none focus:ring-0  "
-                        style={{color:"#854CE6",width: "250px",width:"240px",background:"transparent",border:"none",paddingLeft: "43px",paddingBottom: "8px",border:"none", boxShadow: "none", outline:"none"}}
+                        style={{color:"#854CE6",width: "480px",fontSize:"20px",background:"transparent",paddingLeft: "100px",border:"none",marginLeft: "100px",paddingBottom: "8px",border:"none", boxShadow: "none", outline:"none",height:"70px"}}
                         />
                       </div>
                   </div>
                   </form>
-                  <TokenItem style={{marginTop:"12px"}}>
-                    <button  style={{background:"none",border:"none",color:"#854CE6"}}  onClick={handleToTransfer} disabled={isTransfering}>
+                  <TokenItem style={{marginTop:"41px"}}>
+                    <button  style={{background:"none",border:"none",color:"#854CE6",fontSize:"29px"}}  onClick={handleToTransfer} disabled={isTransfering}>
                     {isTransfering ? (
                         <>
-                        Transfering
+                        
                         <Spinner />
                         </>
                       ) : (

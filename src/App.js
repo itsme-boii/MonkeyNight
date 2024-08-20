@@ -53,24 +53,12 @@ function App() {
             <Dashbord />
            <Wrapper>
               <Register />
-             
-              {/* <Experience /> */}
+              <MintToken />
+              <TransferTokens/> 
+              <AllotAllowance/> 
+              <TokenBalance/>  
+              <BalanceByDate/>
             </Wrapper>
-              
-            <MintToken />
-            <Wrapper>
-<TransferTokens/>     
-    {/*<Contact />*/}
-            </Wrapper> 
-            <Wrapper>
-            <AllotAllowance/>    
-            
-            </Wrapper>
-            <TokenBalance/>  
-            <Wrapper>
-            <BalanceByDate/>
-            </Wrapper>
-            {/* <Footer /> */}
           </div>
         </Body>
       </BrowserRouter>

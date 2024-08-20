@@ -10,8 +10,9 @@
 }
 
 body {
-  margin: 0px !important;
+  margin: q00px !important;
   padding: 0;
+  overflow-x: hidden;
   font-family: "Montserrat", sans-serif;
 }
 
