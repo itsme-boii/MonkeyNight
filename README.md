@@ -1,48 +1,42 @@
-Crypto Portfolio App
-Overview
-The Crypto Portfolio App is a decentralized application (DApp) designed to allow users to mint and manage their own tokens on the Sepolia testnet. This project utilizes A2Solidity smart contracts, including a Token Manager contract and a User Storage contract.
+# Responsive React Website with Token Management
 
-Key Features
--Token Minting: Users can mint their own tokens with a custom name and symbol.
--Token Management: Users can transfer tokens, give allowances to smart contracts, and check allowances.
--User Storage: A smart contract to maintain user-specific data and token registrations.
--Token Balance Tracking: Visual representation of token balances over time using bar graphs.
+This project is a responsive React website designed to handle token management, including functionalities for adding tokens to a watch list, viewing balances, and transferring tokens. It ensures a consistent user experience across various devices by using responsive design techniques.
 
-Installation
-`Follow these steps to set up and run the Crypto Portfolio App locally.
+## Features
 
-git clone https://github.com/yourusername/crypto-portfolio-app.git
-cd crypto-portfolio-app
-npm install
-npm run start
+- **Responsive Layout**: Utilizes CSS Flexbox and Grid for a flexible, responsive layout.
+- **Media Queries**: Adjusts styles based on screen size to fit content on any device.
+- **Fluid Typography and Images**: Ensures text and images scale smoothly across different screen sizes.
+- **Mobile-First Design**: Designed with mobile devices in mind first, then scaled up for larger screens.
+- **Responsive Navbar**: Includes a mobile-friendly navbar that collapses into a hamburger menu on smaller screens.
+- **Token Management**:
+  - Add tokens to a watch list.
+  - View current balances for each token.
+  - View historical balances based on dates.
+  - Check token allowances and perform operations such as transferring tokens.
+- **Smart Contract Interaction**:
+  - Deploy smart contracts with token names and symbols.
+  - Retrieve and display balance history using JavaScript.
 
+## Technologies Used
 
-Usage
--Connecting Your Wallet
--Connect Wallet: The application requires a web3-enabled wallet such as MetaMask. Ensure your wallet is connected to the Sepolia testnet.
+- **React**: JavaScript library for building user interfaces.
+- **CSS Flexbox** and **CSS Grid**: For responsive, flexible layouts.
+- **Media Queries**: To apply different styles based on screen size.
+- **Responsive Design Frameworks**: Optional use of frameworks like Bootstrap or Tailwind CSS.
+- **Solidity**: For smart contract development.
+- **JavaScript**: For interacting with smart contracts and handling data.
 
-Token Manager
--Deploy Token Manager:
-      Enter the desired token name and symbol in the application interface.
-      Click on "Deploy" to deploy your Token Manager contract.
--Register Your Token:
-      After deployment, register your token in the User Storage contract.
--Mint Tokens:
-      Mint an initial balance of 1000 tokens.
--Transfer Tokens:
-      Provide the recipient’s address and the amount to transfer.
--Give Allowance:
-      Click on "Give Allowance" to allow a smart contract to spend tokens on your behalf.
-      Check the current allowance at any time.
--View Token Balance:
-      Track your token balance over time with a bar graph that shows the balance on each date.
-      
-Smart Contracts
--Token Manager
-   Minting: Allows users to mint tokens.
-   Transfers: Facilitates the transfer of tokens between addresses.
-   Allowance: Users can grant and check allowances for smart contracts.
--User Storage
-   Registration: Keeps track of user-specific token registrations and balances.
+## Getting Started
 
+### Prerequisites
 
+- **Node.js** and **npm** installed on your machine.
+- **Metamask** or another Ethereum wallet for interacting with smart contracts.
+
+### Installation
+
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/your-username/responsive-react-website.git
+   cd responsive-react-website
