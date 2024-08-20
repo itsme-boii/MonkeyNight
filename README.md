@@ -29,8 +29,9 @@ This project is a React website designed to handle token management, including f
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/your-username/responsive-react-website.git
-   cd responsive-react-website
+   git clone https://github.com/itsme-boii/MonkeyNight.git
+   
+Navigate to this repo
 
 
 2. **Install dependencies**:
