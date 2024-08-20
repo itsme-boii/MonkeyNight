@@ -14,11 +14,15 @@ const Nav = styled.div`
   top: 0;
   z-index: 10;
   color: white;
+  @media screen and (max-width: 768px) {
+    justify-content: space-between;
+    padding: 0 10px;
+  }
 `;
 
 const NavbarContainer = styled.div`
   width:100%;
-  max-width: 2000px;
+  max-width: 2100px;
   padding: -8px;
   display: flex;
   align-items: center;
@@ -27,7 +31,8 @@ const NavbarContainer = styled.div`
 `;
 
 const Title = styled(LinkR)`
-  width: 700px;
+  width: 100%;
+  max-width:2800;
   padding: 0 60px;
   margin-right:-100px;
   font-weight: 700;
@@ -36,6 +41,19 @@ const Title = styled(LinkR)`
   color: inherit;
    display: flex;
     white-space: nowrap;
+
+    @media screen and (max-width: 1200px) {
+    font-size: 30px;
+  }
+
+  @media screen and (max-width: 768px) {
+    font-size: 24px;
+  }
+
+  @media screen and (max-width: 480px) {
+    font-size: 20px;
+  }
+  }
 `;
 
 const NavItems = styled.ul`
@@ -71,8 +89,10 @@ const ButtonContainer = styled.div`
   justify-content: end;
   align-items: center;
   padding: 0 -10px;
+  
   @media screen and (max-width: 768px) {
-    display: none;
+    flex-grow: 1;
+    justify-content: flex-end;
   }
 `;
 

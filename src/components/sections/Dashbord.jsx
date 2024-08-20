@@ -36,7 +36,7 @@ const TokenInnerContainer = styled.div`
   gap:200px;
   justify-content: space-between;
   align-items: center;
-  width: 2000px;
+  width: 100%;
   max-width: 2500px;
 `;
 

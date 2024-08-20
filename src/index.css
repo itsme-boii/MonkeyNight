@@ -3,17 +3,17 @@
 * {
   box-sizing: border-box;
   margin: 0;
-  
   padding: 0;
   scroll-behavior: smooth;
   font-family: "Poppins", sans-serif;
 }
 
 body {
-  margin: q00px !important;
+  margin: 0;
   padding: 0;
   overflow-x: hidden;
   font-family: "Montserrat", sans-serif;
+  width: 100%;
 }
 
 /* width */
@@ -38,6 +38,73 @@ body {
   background: #626970;
 }
 
+/* Backdrop filter */
 ::-webkit-backdrop-filter {
   blur: 3px saturate(106%);
+}
+
+/* Responsive Typography */
+html {
+  font-size: 100%; /* Base font size for small screens */
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 112.5%; /* Increase font size for tablets */
+  }
+}
+
+@media (min-width: 1200px) {
+  html {
+    font-size: 125%; /* Further increase font size for larger screens */
+  }
+}
+
+/* Responsive Container */
+.container {
+  max-width: 100%;
+  padding: 1rem; /* Ensure some padding around content */
+  margin: 0 auto;
+}
+
+/* Responsive Flexbox Layout */
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem; /* Space between items */
+}
+
+.flex-item {
+  flex: 1 1 calc(100% - 1rem); /* Single column on small screens */
+}
+
+@media (min-width: 768px) {
+  .flex-item {
+    flex: 1 1 calc(50% - 1rem); /* Two columns on tablets */
+  }
+}
+
+@media (min-width: 1200px) {
+  .flex-item {
+    flex: 1 1 calc(33.333% - 1rem); /* Three columns on larger screens */
+  }
+}
+
+/* Responsive Images */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Responsive Videos */
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Media Queries for Specific Layout Adjustments */
+@media (max-width: 600px) {
+  ::-webkit-scrollbar {
+    width: 2px; /* Narrower scrollbar on small screens */
+  }
 }

@@ -10,7 +10,7 @@ import MintToken from "./components/sections/MintToken.jsx";
 import AllotAllowance from "./components/sections/Allowance.jsx";
 import TokenBalance from "./components/sections/TokenBalance.jsx";
 import BalanceByDate from "./components/sections/BalanceByDate.jsx";
-import useWindowSize from "./utils/useWindowSize.js";
+
 const Body = styled.div`
   background-color: ${({ theme }) => theme.bg};
   width: 100%;
@@ -34,16 +34,10 @@ const Wrapper = styled.div`
   clip-path: polygon(0 0, 100% 0, 100% 100%, 30% 98%, 0 100%);
 `;
 
-const ResponsiveComponent = styled.div`
-  width: ${({ width }) => (width > 768 ? "100%" : "100%")};
-`;
-
 
 
 function App() {
-  const {width} = useWindowSize();
   return (
-    <ResponsiveComponent width={width}>
     <ThemeProvider theme={darkTheme}>
       <BrowserRouter>
         <Navbar />
@@ -63,7 +57,7 @@ function App() {
         </Body>
       </BrowserRouter>
     </ThemeProvider>
-    </ResponsiveComponent>
+  
   );
 
 }
